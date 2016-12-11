@@ -1,8 +1,7 @@
 from django.shortcuts import render
-
-# Create your views here.
-from django.http import HttpResponse
+from .models import Card
 
 
 def index(request):
-    return render(request,'arduino/index.html',{})
+    card_list = Card.objects.all()
+    return render(request,'arduino/index.html',{'card_list':card_list})

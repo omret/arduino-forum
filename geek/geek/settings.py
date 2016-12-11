@@ -25,7 +25,7 @@ SECRET_KEY = 'ukt!zar(fua5*cv_xn(+3s51b__a5v5t@&o5&gnmqkf36_q=ei'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'arduino',
+    'arduino.apps.ArduinoConfig',
 ]
 
 MIDDLEWARE = [
@@ -75,11 +75,20 @@ WSGI_APPLICATION = 'geek.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+POSTGRESQL_DB = "geek"
+POSTGRESQL_USER = "postgres"
+POSTGRESQL_PASS = "abc123_"
+POSTGRESQL_HOST = "localhost"
+POSTGRESQL_PORT = "5432"
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': POSTGRESQL_DB,
+        'USER': POSTGRESQL_USER,
+        'PASSWORD': POSTGRESQL_PASS,
+        'HOST': POSTGRESQL_HOST,
+        'PORT': POSTGRESQL_PORT,
     }
 }
 

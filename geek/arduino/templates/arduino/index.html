@@ -1,49 +1,43 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="keywords" content="arduino" />
-    <meta name="description" content="" />
-    <title>Arduino</title>
-
-    <link rel="stylesheet" href="{% static 'arduino/other/material.min.css' %}">
-    <script src="{% static 'arduino/other/material.min.js' %}"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  </head>
-
-  <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <!-- Title -->
-          <span class="mdl-layout-title">Omret</span>
-          <!-- Add spacer, to align navigation to the right -->
-          <div class="mdl-layout-spacer"></div>
-          <!-- Navigation. We hide it in small screens. -->
-          <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="">首页 Home</a>
-            <a class="mdl-navigation__link" href="">论坛 Forum</a>
-            <a class="mdl-navigation__link" href="">关于 About</a>
-          </nav>
-        </div>
-      </header>
-      <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Title</span>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">Home</a>
-          <a class="mdl-navigation__link" href="">Arduino</a>
-          <a class="mdl-navigation__link" href="">Raspberry Pi</a>
-          <a class="mdl-navigation__link" href="">About</a>
-        </nav>
-      </div>
-      <main class="mdl-layout__content">
-        <div class="page-content">
-          <!-- Your content goes here -->
-        </div>
-      </main>
+{% extends "./index_base.html" %} {% load static %} {% block header %}
+<link rel="stylesheet" href="{% static 'arduino/css/index.css' %}"> {% endblock %} {% block content %}
+<div class="content-container">
+  <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+    <div class="mdl-tabs__tab-bar">
+      <a href="#starks-panel" class="mdl-tabs__tab is-active">入门型</a>
+      <a href="#lannisters-panel" class="mdl-tabs__tab">提高型</a>
+      <a href="#targaryens-panel" class="mdl-tabs__tab">物联网</a>
+      <a href="#targaryens-panel" class="mdl-tabs__tab">可穿戴</a>
+      <a href="#targaryens-panel" class="mdl-tabs__tab">3D打印</a>
     </div>
-  </body>
 
-</html>
+    <div class="mdl-tabs__panel is-active" id="starks-panel">
+    </div>
+    <div class="mdl-tabs__panel" id="lannisters-panel">
+    </div>
+    <div class="mdl-tabs__panel" id="targaryens-panel">
+    </div>
+  </div>
+
+
+  <div class="mdl-grid">
+    {% for card in card_list %}
+    <div class="mdl-cell mdl-cell--3-col">
+      <div class="card-wide mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <img src="{% static 'arduino/img/' %}{{ card.img }}">
+        </div>
+        <div class="mdl-card__supporting-text">
+          <h6>{{ card.board_model }}</h6>
+          <span>{{ card.discription }}</span>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          详细信息
+        </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
