@@ -3,41 +3,156 @@
 <div class="content-container">
   <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
     <div class="mdl-tabs__tab-bar">
-      <a href="#starks-panel" class="mdl-tabs__tab is-active">入门型</a>
-      <a href="#lannisters-panel" class="mdl-tabs__tab">提高型</a>
-      <a href="#targaryens-panel" class="mdl-tabs__tab">物联网</a>
-      <a href="#targaryens-panel" class="mdl-tabs__tab">可穿戴</a>
-      <a href="#targaryens-panel" class="mdl-tabs__tab">3D打印</a>
+      <a href="#entry-panel" class="mdl-tabs__tab is-active">入门型</a>
+      <a href="#enhanced-panel" class="mdl-tabs__tab">提高型</a>
+      <a href="#iot-panel" class="mdl-tabs__tab">物联网</a>
+      <a href="#wearable-panel" class="mdl-tabs__tab">可穿戴</a>
+      <a href="#thd-panel" class="mdl-tabs__tab">3D打印</a>
     </div>
 
-    <div class="mdl-tabs__panel is-active" id="starks-panel">
-    </div>
-    <div class="mdl-tabs__panel" id="lannisters-panel">
-    </div>
-    <div class="mdl-tabs__panel" id="targaryens-panel">
-    </div>
-  </div>
-
-
-  <div class="mdl-grid">
-    {% for card in card_list %}
-    <div class="mdl-cell mdl-cell--3-col">
-      <div class="card-wide mdl-card mdl-shadow--2dp">
-        <div class="mdl-card__title">
-          <img src="{% static 'arduino/img/' %}{{ card.img }}">
+    <!-- entry cards list part -->
+    <div class="mdl-tabs__panel is-active" id="entry-panel">
+      <div class="mdl-grid">
+        {% for card in entry_cards %}
+        <div class="mdl-cell mdl-cell--3-col">
+          <div class="card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+              <img src="{% static 'arduino/img/' %}{{ card.img }}">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <h6>{{ card.board_model }}</h6>
+              <span>{{ card.discription }}</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              详细信息
+            </a>
+            </div>
+          </div>
         </div>
-        <div class="mdl-card__supporting-text">
-          <h6>{{ card.board_model }}</h6>
-          <span>{{ card.discription }}</span>
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-          详细信息
-        </a>
-        </div>
+        {% endfor %}
       </div>
     </div>
-    {% endfor %}
+
+    <div class="mdl-tabs__panel" id="enhanced-panel">
+      <div class="mdl-grid">
+        {% for card in enhanced_cards %}
+        <div class="mdl-cell mdl-cell--3-col">
+          <div class="card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+              <img src="{% static 'arduino/img/' %}{{ card.img }}">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <h6>{{ card.board_model }}</h6>
+              <span>{{ card.discription }}</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              详细信息
+            </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- enhanced card list part -->
+    <div class="mdl-tabs__panel" id="iot-panel">
+      <div class="mdl-grid">
+        {% for card in iot_cards %}
+        <div class="mdl-cell mdl-cell--3-col">
+          <div class="card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+              <img src="{% static 'arduino/img/' %}{{ card.img }}">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <h6>{{ card.board_model }}</h6>
+              <span>{{ card.discription }}</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              详细信息
+            </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- iot card list part -->
+    <div class="mdl-tabs__panel" id="iot-panel">
+      <div class="mdl-grid">
+        {% for card in iot_cards %}
+        <div class="mdl-cell mdl-cell--3-col">
+          <div class="card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+              <img src="{% static 'arduino/img/' %}{{ card.img }}">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <h6>{{ card.board_model }}</h6>
+              <span>{{ card.discription }}</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              详细信息
+            </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- wearable card list part -->
+    <div class="mdl-tabs__panel" id="wearable-panel">
+      <div class="mdl-grid">
+        {% for card in wearable_cards %}
+        <div class="mdl-cell mdl-cell--3-col">
+          <div class="card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+              <img src="{% static 'arduino/img/' %}{{ card.img }}">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <h6>{{ card.board_model }}</h6>
+              <span>{{ card.discription }}</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              详细信息
+            </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- 3d printing card list part -->
+    <div class="mdl-tabs__panel" id="thd-panel">
+      <div class="mdl-grid">
+        {% for card in thd_cards %}
+        <div class="mdl-cell mdl-cell--3-col">
+          <div class="card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+              <img src="{% static 'arduino/img/' %}{{ card.img }}">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <h6>{{ card.board_model }}</h6>
+              <span>{{ card.discription }}</span>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              详细信息
+            </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
   </div>
 </div>
 {% endblock %}
