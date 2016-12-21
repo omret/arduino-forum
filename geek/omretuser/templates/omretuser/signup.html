@@ -6,9 +6,9 @@
   <form>
     <div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="username" pattern="[A-Z,a-z,_]*">
+        <input class="mdl-textfield__input" type="text" id="username" pattern="[0-9,A-Z,a-z,_]*">
         <label class="mdl-textfield__label" for="user">User name</label>
-        <span class="mdl-textfield__error">请使用字母和下划线组合</span>
+        <span class="mdl-textfield__error">请使用字母数字和下划线组合</span>
       </div>
     </div>
 
@@ -31,12 +31,15 @@
 
   <button class="confirm-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
       验证用户名
-    </button>
+  </button>
 
   <button class="submit-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit">
       提交
-    </button>
-    
+  </button>
+
+  <div class="tip-container">
+    <small>Tips: 用户名用于登录;邮箱用于找回密码，请务必填写正确邮箱.</small>
+  </div>
 </div>
 {% endblock %}
 {% block script %}
