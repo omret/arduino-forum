@@ -1,0 +1,43 @@
+{% extends "index_base.html" %} {% load static %} {% block header %}
+<link rel="stylesheet" href="{% static 'omretuser/css/signup.css' %}"> {% endblock %} {% block content %}
+<div class="content-container">
+  <h5>SIGN UP 注册</h5>
+
+  <form>
+    <div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="username" pattern="[A-Z,a-z,_]*">
+        <label class="mdl-textfield__label" for="user">User name</label>
+        <span class="mdl-textfield__error">请使用字母和下划线组合</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="email" id="email">
+        <label class="mdl-textfield__label" for="user">Email</label>
+        <span class="mdl-textfield__error">请使用正确的邮箱格式</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="password" id="password" pattern="[A-Z,a-z,_,-]*">
+        <label class="mdl-textfield__label" for="user">Password</label>
+        <span class="mdl-textfield__error">请勿包含特殊字符，请使用字母,-,_</span>
+      </div>
+    </div>
+  </form>
+
+  <button class="confirm-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+      验证用户名
+    </button>
+
+  <button class="submit-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit">
+      提交
+    </button>
+    
+</div>
+{% endblock %}
+{% block script %}
+{% endblock %}

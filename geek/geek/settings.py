@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
-from machina import get_apps as get_machina_apps
-from machina import MACHINA_MAIN_STATIC_DIR
-from machina import MACHINA_MAIN_TEMPLATE_DIR
+# from machina import get_apps as get_machina_apps
+# from machina import MACHINA_MAIN_STATIC_DIR
+# from machina import MACHINA_MAIN_TEMPLATE_DIR
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,11 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'arduino.apps.ArduinoConfig',
+    'forum.apps.ForumConfig',
+    'omretuser.apps.OmretuserConfig',
     # Machina related apps:
-    'mptt',
-    'haystack',
-    'widget_tweaks',
-] + get_machina_apps()
+    #'mptt',
+    #'haystack',
+    #'widget_tweaks',
+]
+#+ get_machina_apps()
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,7 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
+    #'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
 ]
 
 ROOT_URLCONF = 'geek.urls'
@@ -65,7 +68,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            MACHINA_MAIN_TEMPLATE_DIR,
+            #MACHINA_MAIN_TEMPLATE_DIR,
+            "templates",
          ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -75,7 +79,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 # Machina
-                'machina.core.context_processors.metadata',
+                #'machina.core.context_processors.metadata',
             ],
         },
     },
@@ -142,6 +146,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+FIXTURE_DIRS = [
+    'fixtures',
+]
+
+'''
 STATICFILES_DIRS = (
   MACHINA_MAIN_STATIC_DIR,
 )
@@ -161,3 +170,4 @@ CACHES = {
     'LOCATION': '/tmp',
   }
 }
+'''
