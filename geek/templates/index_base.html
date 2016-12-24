@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="{% static 'arduino/other/material.min.css' %}">
     <script src="{% static 'arduino/other/material.min.js' %}"></script>
+    <script src="{% static 'jquery-3.1.1.min.js' %}"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> {% block header %} {% endblock %}
     <style>
       body {
@@ -51,7 +52,7 @@
         </div>
       </main>
     </div>
-    <script>
+    <script type="text/javascript">
       {% block script %} {% endblock %}
     </script>
   </body>
