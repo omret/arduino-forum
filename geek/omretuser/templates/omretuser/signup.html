@@ -30,7 +30,7 @@
     </div>
 
     <button class="confirm-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="comfirm-button" type="button">
-      验证用户名邮箱
+      验证用户名及邮箱
     </button>
 
     <button class="submit-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit" id="submit-button">
@@ -53,26 +53,28 @@
   $("#comfirm-button").click(function(){
     var username = $("#username").val();
     var email = $("#email").val();
+    if((username.trim() && email.trim()) != ''){
 
-    $.ajax({
-      type: "POST",
-      url: "/signup/comfirm/",
-      data:{
-        username: username,
-        email : email
-      },
-      dataType:"json",
-      success:function(data){
-        if(data.msg_type == 'error'){
-          $("#tip-input").css('color','red');
+      $.ajax({
+        type: "POST",
+        url: "/signup/comfirm/",
+        data:{
+          username: username,
+          email : email
+        },
+        dataType:"json",
+        success:function(data){
+          if(data.msg_type == 'error'){
+            $("#tip-input").css('color','red');
+          }
+          else if (data.msg_type == 'success'){
+            $("#tip-input").css('color','green');
+          }
+          $("#tip-input").empty();
+          $("#tip-input").append(data.msg);
         }
-        else if (data.msg_type == 'success'){
-          $("#tip-input").css('color','green');
-        }
-        $("#tip-input").empty();
-        $("#tip-input").append(data.msg);
-      }
-    })
+      })
+    }
   });
 
 {% endblock %}

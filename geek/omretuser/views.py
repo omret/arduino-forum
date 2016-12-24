@@ -17,23 +17,21 @@ def signup_submit(request):
         username = request.POST.get("username","")
         email = request.POST.get("email","")
         password = request.POST.get("password","")
-        print(username)
-        print(email)
-        print(password)
 
-        user = User()
-        user.name = username
-        user.email = email
-        user.password = base64.b64encode(password.encode(encoding='utf-8'))
-        print(user.password)
-        try:
-            user.save()
-            return HttpResponseRedirect('/')
-        except Exception as e:
-            print(e)
-            return HttpResponseRedirect('/signup/')
+        if (username.strip() and email.strip() and password.strp()) != '' :
+            user = User()
+            user.name = username
+            user.email = email
+            user.password = base64.b64encode(password.encode(encoding='utf-8'))
+            print(user.password)
+            try:
+                user.save()
+                return HttpResponseRedirect('/')
+            except Exception as e:
+                print(e)
+                return HttpResponseRedirect('/signup/')
 
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/signup/')
 
 @csrf_exempt
 def signup_comfirm(request):
@@ -62,4 +60,4 @@ def signup_comfirm(request):
     return HttpResponse("");
 
 def signin(request):
-    pass
+    return render(request,'omretuser/signin.html',{})
