@@ -3,7 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.views.decorators.csrf import csrf_protect,csrf_exempt
 
 import json
-import base64
+import hashlib
 
 from .models import User
 
@@ -18,12 +18,12 @@ def signup_submit(request):
         email = request.POST.get("email","")
         password = request.POST.get("password","")
 
-        if (username.strip() and email.strip() and password.strp()) != '' :
+        if (username.strip() and email.strip() and password.strip()) != '' :
             user = User()
             user.name = username
             user.email = email
-            user.password = base64.b64encode(password.encode(encoding='utf-8'))
-            print(user.password)
+            print(hashlib.sha1(password.encode(encoding='utf-8')).hexdigest())
+            user.password = hashlib.sha1(password.encode(encoding='utf-8')).hexdigest()
             try:
                 user.save()
                 return HttpResponseRedirect('/')
@@ -61,3 +61,19 @@ def signup_comfirm(request):
 
 def signin(request):
     return render(request,'omretuser/signin.html',{})
+
+@csrf_protect
+def signin_submit(request):
+    if request.method == 'POST':
+        username = request.POST.get("username","")
+        password = request.POST.get("password","")
+        if (username.strip() and password.strip()) != '' :
+            try:
+                user = User.objects.get(name=username)
+                if user.password == hashlib.sha1(password.encode(encoding='utf-8')).hexdigest():
+                    return HttpResponseRedirect('/')
+                else:
+                    return render(request,'omretuser/signin.html',{'msg':'用户名或密码错误'})
+            except Exception as e:
+                return render(request,'omretuser/signin.html',{'msg':'用户名或密码错误'})
+    return HttpResponseRedirect('/signin/')
