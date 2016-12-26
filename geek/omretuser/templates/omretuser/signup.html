@@ -3,39 +3,45 @@
 <div class="content-container">
   <h5>SIGN UP 注册</h5>
 
-  <form>
+  <form id="signup-form" action="/signupsubmit/" method="post">
+    {% csrf_token %}
     <div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="username" pattern="[0-9,A-Z,a-z,_]*">
-        <label class="mdl-textfield__label" for="user">User name</label>
+        <input class="mdl-textfield__input" type="text" id="username" name="username" pattern="[0-9,A-Z,a-z,_]*">
+        <label class="mdl-textfield__label" for="username">User name</label>
         <span class="mdl-textfield__error">请使用字母数字和下划线组合</span>
       </div>
     </div>
 
     <div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="email" id="email">
-        <label class="mdl-textfield__label" for="user">Email</label>
+        <input class="mdl-textfield__input" type="email" id="email" name="email">
+        <label class="mdl-textfield__label" for="email">Email</label>
         <span class="mdl-textfield__error">请使用正确的邮箱格式</span>
       </div>
     </div>
 
     <div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="password" id="password" pattern="[A-Z,a-z,_,-]*">
-        <label class="mdl-textfield__label" for="user">Password</label>
-        <span class="mdl-textfield__error">请勿包含特殊字符，请使用字母,-,_</span>
+        <input class="mdl-textfield__input" type="password" id="password" name="password" pattern="[0-9,A-Z,a-z,_,-]*">
+        <label class="mdl-textfield__label" for="password">Password</label>
+        <span class="mdl-textfield__error">请勿包含特殊字符，请使用字母数字,-,_</span>
       </div>
     </div>
+
+    <button class="confirm-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="comfirm-button" type="button">
+      验证用户名及邮箱
+    </button>
+
+    <button class="submit-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit" id="submit-button">
+      提交
+    </button>
   </form>
 
-  <button class="confirm-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-      验证用户名
-  </button>
-
-  <button class="submit-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit">
-      提交
-  </button>
+  <div class="tip-input-container">
+    <small id="tip-input">
+    </small>
+  </div>
 
   <div class="tip-container">
     <small>Tips: 用户名用于登录;邮箱用于找回密码，请务必填写正确邮箱.</small>
@@ -43,4 +49,32 @@
 </div>
 {% endblock %}
 {% block script %}
+
+  $("#comfirm-button").click(function(){
+    var username = $("#username").val();
+    var email = $("#email").val();
+    if((username.trim() && email.trim()) != ''){
+
+      $.ajax({
+        type: "POST",
+        url: "/signupcomfirm/",
+        data:{
+          username: username,
+          email : email
+        },
+        dataType:"json",
+        success:function(data){
+          if(data.msg_type == 'error'){
+            $("#tip-input").css('color','red');
+          }
+          else if (data.msg_type == 'success'){
+            $("#tip-input").css('color','green');
+          }
+          $("#tip-input").empty();
+          $("#tip-input").append(data.msg);
+        }
+      })
+    }
+  });
+
 {% endblock %}

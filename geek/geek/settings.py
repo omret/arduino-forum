@@ -150,11 +150,11 @@ FIXTURE_DIRS = [
     'fixtures',
 ]
 
-'''
-STATICFILES_DIRS = (
-  MACHINA_MAIN_STATIC_DIR,
-)
+STATICFILES_DIRS = [
+  'static',
+]
 
+'''
 HAYSTACK_CONNECTIONS = {
   'default': {
     'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
