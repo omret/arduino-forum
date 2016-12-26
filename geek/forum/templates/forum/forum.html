@@ -1,8 +1,28 @@
 {% extends "index_base.html" %}
 {% load static %}
 {% block header %}
+<link rel="stylesheet" href="{% static 'forum/css/forum.css' %}">
 {% endblock %}
 {% block content %}
+<div class="content-container">
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--8-col">
+
+    </div>
+    <div class="mdl-cell mdl-cell--4-col">
+      <div class="user-card mdl-card mdl-shadow--2dp">
+        <div class="user-card-button-container">
+          <button class="user-card-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="signin-button" onclick="location='/signin'">
+          登录
+          </button>
+          <button class="user-card-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect " id="signup-button" onclick="location='/signup'" >
+          注册
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
 {% block script %}
 {% endblock %}

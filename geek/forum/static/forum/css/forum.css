@@ -1,0 +1,16 @@
+.content-container{
+  width:960px;
+  text-align: center;
+  margin: 0 auto;
+  background-color: yellow;
+}
+
+.user-card{
+  width:auto;
+  text-align: center;
+}
+
+.user-card-button{
+  width:36px;
+  margin: 0 auto;
+}
