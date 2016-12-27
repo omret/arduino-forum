@@ -2,7 +2,6 @@
   width:960px;
   text-align: center;
   margin: 0 auto;
-  background-color: yellow;
 }
 
 .user-card{
@@ -12,5 +11,18 @@
 
 .user-card-button{
   width:36px;
-  margin: 0 auto;
+  margin-top:82px;
+}
+
+#signin-button{
+  margin-right: 12px;
+}
+
+#signup-button{
+  margin-left: 12px;
+}
+
+.content-card{
+  width: auto;
+  height: 500px;
 }
