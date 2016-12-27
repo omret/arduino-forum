@@ -2,42 +2,45 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="keywords" content="arduino" />
-    <meta name="description" content="" />
-    <title>Arduino</title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="keywords" content="arduino"/>
+        <meta name="description" content=""/>
+        <title>Arduino</title>
 
-    <link rel="stylesheet" href="{% static 'arduino/other/material.min.css' %}">
-    <script src="{% static 'arduino/other/material.min.js' %}"></script>
-    <script src="{% static 'jquery-3.1.1.min.js' %}"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> {% block header %} {% endblock %}
-    <style>
-      body {
-        background: #f0f0f0;
-      }
-    </style>
+        <link rel="stylesheet" href="{% static 'arduino/other/material.min.css' %}">
+        <script src="{% static 'arduino/other/material.min.js' %}"></script>
+        <script src="{% static 'jquery-3.1.1.min.js' %}"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        {% block header %}{% endblock %}
+        <style>
+            body {
+                background: #f0f0f0;
+                min-width: 960px;
+            }
 
-  </head>
+        </style>
 
-  <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <!-- Title -->
-          <span class="mdl-layout-title">Omret</span>
-          <!-- Add spacer, to align navigation to the right -->
-          <div class="mdl-layout-spacer"></div>
-          <!-- Navigation. We hide it in small screens. -->
-          <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="/">首页 Home</a>
-            <a class="mdl-navigation__link" href="">资料 Info
-            <a class="mdl-navigation__link" href="/forum">论坛 Forum</a>
-            <a class="mdl-navigation__link" href="">关于 About</a>
-          </nav>
-        </div>
-      </header>
-      <!-- <div class="mdl-layout__drawer">
+    </head>
+
+    <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title">Omret</span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation. We hide it in small screens. -->
+                    <nav class="mdl-navigation mdl-layout--large-screen-only">
+                        <a class="mdl-navigation__link" href="/">首页 Home</a>
+                        <a class="mdl-navigation__link" href="">资料 Info
+                            <a class="mdl-navigation__link" href="/forum">论坛 Forum</a>
+                            <a class="mdl-navigation__link" href="">关于 About</a>
+                        </nav>
+                    </div>
+                </header>
+                <!-- <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Omret</span>
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" href="">Home</a>
@@ -46,15 +49,15 @@
           <a class="mdl-navigation__link" href="">About</a>
         </nav>
       </div> -->
-      <main class="mdl-layout__content">
-        <div class="page-content">
-          {% block content %} {% endblock %}
-        </div>
-      </main>
-    </div>
-    <script type="text/javascript">
-      {% block script %} {% endblock %}
-    </script>
-  </body>
+                <main class="mdl-layout__content">
+                    <div class="page-content">
+                        {% block content %}{% endblock %}
+                    </div>
+                </main>
+            </div>
+            <script type="text/javascript">
+                {% block script %}{% endblock %}
+            </script>
+        </body>
 
-</html>
+    </html>
