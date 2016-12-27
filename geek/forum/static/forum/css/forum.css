@@ -1,0 +1,23 @@
+.content-container {
+    width: 960px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.user-card {
+    width: auto;
+    text-align: center;
+}
+
+.user-card-button {
+    width: 36px;
+    margin-top: 82px;
+}
+
+#signin-button {
+    /*margin-right: 6px;*/
+}
+
+#signup-button {
+    /*margin-left: 6px;*/
+}
