@@ -15,9 +15,14 @@
 }
 
 #signin-button {
-    /*margin-right: 6px;*/
+    margin-right: 12px;
 }
 
 #signup-button {
-    /*margin-left: 6px;*/
+    margin-left: 12px;
+}
+
+.content-card {
+    width: auto;
+    height: 500px;
 }
