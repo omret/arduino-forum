@@ -154,6 +154,8 @@ STATICFILES_DIRS = [
   'static',
 ]
 
+SESSION_COOKIE_AGE = 86400
+
 '''
 HAYSTACK_CONNECTIONS = {
   'default': {

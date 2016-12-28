@@ -13,7 +13,9 @@
     </div>
     <div class="mdl-cell mdl-cell--4-col">
       <div class="user-card mdl-card mdl-shadow--2dp">
+        <span id="user-id">{{ user.id }}</span>
         <div class="user-card-profile">
+          {{ user.name }}
         </div>
         <!-- have not signin -->
         <div class="user-card-button-container">
@@ -30,4 +32,15 @@
 </div>
 {% endblock %}
 {% block script %}
+$(function(){
+  userid = $("#user-id").text();
+  if(userid.trim() == ""){
+    $(".user-card-profile").hide();
+    $(".user-card-button-container").css('display','block');
+  }
+  else{
+    $(".user-card-profile").show();
+    $(".user-card-button-container").css('display','none');
+  }
+});
 {% endblock %}

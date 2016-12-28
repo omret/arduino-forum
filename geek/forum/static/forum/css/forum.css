@@ -12,6 +12,7 @@
 .user-card-button {
     width: 36px;
     margin-top: 82px;
+
 }
 
 #signin-button {
@@ -25,4 +26,8 @@
 .content-card {
     width: auto;
     height: 500px;
+}
+
+.user-card-button-container{
+  display: none;
 }

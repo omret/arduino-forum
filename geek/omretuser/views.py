@@ -72,8 +72,7 @@ def signin_submit(request):
             try:
                 user = User.objects.get(name=username)
                 if user.password == hashlib.sha1(password.encode(encoding='utf-8')).hexdigest():
-                    useruid = uuid.uuid1().hexdigest
-                    request.session['uid'] = useruid
+                    request.session['uid'] = user.id
                     return HttpResponseRedirect('/')
                 else:
                     return render(request,'omretuser/signin.html',{'msg':'用户名或密码错误'})
