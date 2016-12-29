@@ -1,19 +1,24 @@
 {% extends "forum/forum_base.html" %}
 {% load static %}
 {% block leftcontentstyle %}
+<link rel="stylesheet" href="{% static 'forum/css/forumnew.css' %}">
 {% endblock %}
 {% block leftcontent %}
-<form method="post">
-  {% csrf_token %}
-  <label class="control-label">标题</label>
-
-    <div class="form-group">
-      {{ topicform.title }}
+<div class="left-card mdl-card mdl-shadow--2dp">
+  <form id="new-form" method="post">
+    {% csrf_token %}
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" type="text" id="title" name="title" >
+      <label class="mdl-textfield__label" for="title">Title</label>
     </div>
-    <label class="control-label">文章主体</label>
+    <div>
       {{ topicform.content }}
-    <button id="postarti-button" type="submit" class="btn btn-primary">发表</button>
-</form>
+    </div>
+    <button class="signin-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit" id="post-button">
+      发表
+    </button>
+  </form>
+</div>
 {% endblock %}
 {% block leftcontentscript %}
 {% endblock %}
