@@ -1,0 +1,52 @@
+{% extends "index_base.html" %}
+{% load static %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'forum/css/forum.css' %}">
+{% endblock %}
+{% block leftcontentstyle %}
+{% endblock %}
+{% block content %}
+<div class="content-container">
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--8-col">
+      {% block leftcontent %}
+      {% endblock %}
+    </div>
+    <div class="mdl-cell mdl-cell--4-col">
+      <div class="user-card mdl-card mdl-shadow--2dp">
+        <span id="user-id">{{ user.id }}</span>
+        <div class="user-card-profile">
+          <h4>{{ user.name }}</h4>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="topic-button" onclick="location='/forum/new'">
+          创建新文章
+          </button>
+        </div>
+        <!-- have not signin -->
+        <div class="user-card-button-container">
+          <button class="user-card-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="signin-button" onclick="location='/signin'">
+          登录
+          </button>
+          <button class="user-card-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect " id="signup-button" onclick="location='/signup'" >
+          注册
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+$(function(){
+  userid = $("#user-id").text();
+  if(userid.trim() == ""){
+    $(".user-card-profile").hide();
+    $(".user-card-button-container").css('display','block');
+  }
+  else{
+    $(".user-card-profile").show();
+    $(".user-card-button-container").css('display','none');
+  }
+});
+{% block leftcontentscript %}
+{% endblock %}
+{% endblock %}

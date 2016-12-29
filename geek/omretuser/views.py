@@ -27,6 +27,7 @@ def signup_submit(request):
             user.password = hashlib.sha1(password.encode(encoding='utf-8')).hexdigest()
             try:
                 user.save()
+                request.session['uid'] = user.id
                 return HttpResponseRedirect('/')
             except Exception as e:
                 print(e)

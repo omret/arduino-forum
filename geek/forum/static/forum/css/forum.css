@@ -12,7 +12,6 @@
 .user-card-button {
     width: 36px;
     margin-top: 82px;
-
 }
 
 #signin-button {
@@ -28,6 +27,16 @@
     height: 500px;
 }
 
-.user-card-button-container{
-  display: none;
+.user-card-button-container {
+    display: none;
+}
+
+#user-id {
+    display: none;
+}
+
+#topic-button {}
+
+.user-card-profile {
+    text-align: center;
 }
