@@ -2,9 +2,30 @@
 {% load static %}
 {% block leftcontentstyle %}
 <link rel="stylesheet" href="{% static 'forum/css/forumnew.css' %}">
+<script type="text/javascript" src="{% static 'tinymce/js/tinymce/tinymce.min.js' %}"></script>
+<script>
+     tinymce.init({
+         selector: '#omrettinymce',
+         theme: 'modern',
+         elementpath: false,
+         menubar: false,
+         resize: false,
+         statusbar: false,
+         height: 300,
+         language: 'zh_CN',
+         plugins: 'link image preview fullscreen textcolor autolink insertimage',
+         toolbar1: 'bold italic underline | alignleft aligncenter alignright | forecolor backcolor | bullist numlist | link insertimage | preview',
+         //toolbar2:'link image | preview fullscreen | insertdatetime emoticons',
+         file_browser_callback: function (field_name, url, type, win) {
+             if (type == 'image')
+                 $('#imagepicker_form input').click();
+         }
+     });
+ </script>
 {% endblock %}
 {% block leftcontent %}
 <div class="left-card mdl-card mdl-shadow--2dp">
+  <h4>发布新文章</h4>
   <form id="new-form" method="post">
     {% csrf_token %}
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -15,7 +36,7 @@
       {{ topicform.content }}
     </div>
     <button class="signin-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit" id="post-button">
-      发表
+      提交
     </button>
   </form>
 </div>
