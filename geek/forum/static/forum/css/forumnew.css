@@ -1,8 +1,36 @@
 .left-card {
     width: auto;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 #new-form {
-    padding-top: 50px;
     padding-bottom: 50px;
+}
+
+#post-button{
+  margin-top: 20px;
+}
+
+.dialog-title{
+  color:black;
+  font-size: 1.3rem;
+  padding-bottom: 10px;
+}
+
+#uploadimage_content{
+  display: none;
+}
+
+#referimage_content{
+  display: none;
+}
+
+.dialog-link{
+  color:blue;
+  text-decoration: underline;
+}
+
+.dialog-link:hover{
+  cursor:pointer;
 }

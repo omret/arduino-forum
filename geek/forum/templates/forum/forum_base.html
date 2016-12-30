@@ -36,6 +36,7 @@
 </div>
 {% endblock %}
 {% block script %}
+<script>
 $(function(){
   userid = $("#user-id").text();
   if(userid.trim() == ""){
@@ -47,6 +48,7 @@ $(function(){
     $(".user-card-button-container").css('display','none');
   }
 });
+</script>
 {% block leftcontentscript %}
 {% endblock %}
 {% endblock %}

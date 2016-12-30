@@ -3,6 +3,10 @@
 {% block leftcontentstyle %}
 <link rel="stylesheet" href="{% static 'forum/css/forumnew.css' %}">
 <script type="text/javascript" src="{% static 'tinymce/js/tinymce/tinymce.min.js' %}"></script>
+<script src="{% static 'qiniu/plupload/moxie.min.js' %}"></script>
+<script src="{% static 'qiniu/plupload/plupload.min.js' %}"></script>
+<script src="{% static 'qiniu/dist/qiniu.min.js' %}"></script>
+<script src="{% static 'forum/js/postarti.js' %}"></script>
 <script>
      tinymce.init({
          selector: '#omrettinymce',
@@ -24,6 +28,70 @@
  </script>
 {% endblock %}
 {% block leftcontent %}
+<!-- bootstrap modal part -->
+<!-- <div class="modal fade active" id="insertimageModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 300px;margin-top: 120px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    插入图片
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p><span id="uploadimage_text" class="modaltext">上传图片</span>
+                    <small>或</small>
+                    <span id="referimage_text" class="modaltext">引用外部网站图片</span></p>
+                <div id="uploadimage_content">
+                    <button type="button" class="btn btn-primary" id="choosefile_button">选择文件</button>
+                    <div id="uploadinfotext" style="padding-top: 8px;padding-left: 8px">图片小于2M</div>
+                </div>
+                <div id="referimage_content">
+                    <label class="control-label">输入图片链接：</label>
+
+                    <div class="form-inline">
+                        <input type="text" class="form-control" id="referimage_input">
+                        <button class="btn btn-primary" id="referimage_sure">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<dialog class="mdl-dialog" id="insertimageModal">
+    <div class="mdl-dialog__content">
+      <div class="dialog-title">插入图片</div>
+      <div>
+        <p><span id="uploadimage_text" class="dialog-link">上传本地图片</span>
+          <small>或</small>
+          <span id="referimage_text" class="dialog-link">引用外部网站图片</span>
+        </p>
+      </div>
+      <div id="uploadimage_content">
+          <button type="button" class="signin-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="choosefile_button">选择文件</button>
+          <div id="uploadinfotext" style="padding-top: 8px;padding-left: 8px">图片小于2M</div>
+      </div>
+      <div id="referimage_content">
+          <label class="control-label">输入图片链接：</label>
+          <div class="form-inline">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="referimage_input" >
+              <label class="mdl-textfield__label">链接地址</label>
+            </div>
+            <button class="signin-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="referimage_sure">确定</button>
+          </div>
+      </div>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button" id="close-dialog">取消</button>
+    </div>
+  </dialog>
+
 <div class="left-card mdl-card mdl-shadow--2dp">
   <h4>发布新文章</h4>
   <form id="new-form" method="post">
@@ -42,4 +110,45 @@
 </div>
 {% endblock %}
 {% block leftcontentscript %}
+<script>
+var resetpart = function(){
+  $("#uploadimage_content").hide();
+  $("#referimage_content").hide();
+}
+$("#close-dialog").click(function(){
+  var dialog = document.querySelector('dialog');
+  dialog.close();
+  resetpart();
+})
+//---modal part-----
+var uploadpart = function () {
+    $("#uploadimage_content").show();
+    $("#referimage_content").hide();
+}
+var referpart = function () {
+    $("#uploadimage_content").hide();
+    $("#referimage_content").show();
+}
+var resetInsertImage = function () {
+    var dialog = document.querySelector('dialog');
+    dialog.close();
+    resetpart();
+
+    $("#referimage_input").val("");
+    uploadpart();
+}
+$("#uploadimage_text").click(function () {
+    uploadpart()
+});
+
+$("#referimage_text").click(function () {
+    referpart()
+});
+
+$("#referimage_sure").click(function () {
+    var imageurl = $("#referimage_input").val();
+    insertimage(imageurl)
+    resetInsertImage();
+});
+</script>
 {% endblock %}
