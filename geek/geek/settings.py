@@ -156,6 +156,12 @@ STATICFILES_DIRS = [
 
 SESSION_COOKIE_AGE = 86400
 
+ACCESS_KEY = 'SWD5PvfpvYUXNiueTzbgsOjRRAhxVyKlXeGbYysR'
+
+SECRET_KEY = 'DRsPrqAF7n5jah83dkeyrNsWtLYHKoTidQeGtjOF'
+
+BUKET_NAME = 'omret'
+
 '''
 HAYSTACK_CONNECTIONS = {
   'default': {
