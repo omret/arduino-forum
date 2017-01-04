@@ -3,3 +3,12 @@
     height: auto;
     min-height: 0;
 }
+
+.topic-item-container {
+    text-align: left;
+    padding: 12px 24px;
+}
+
+.topic-item-misc {
+    color: #999;
+}
