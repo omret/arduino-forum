@@ -1,8 +1,26 @@
 {% extends "forum/forum_base.html" %}
 {% load static %}
 {% block leftcontentstyle %}
+<link rel="stylesheet" href="{% static 'forum/css/forum.css' %}">
 {% endblock %}
 {% block leftcontent %}
+<div class="left-card mdl-card mdl-shadow--2dp">
+  {% for item in topic_list %}
+  <div class="topic-item-container">
+    <div class="topic-item-title">
+      {{ item.title }}
+    </div>
+    <div class="topic-item-misc">
+      <span>
+        {{ item.user }}
+      </span>
+      <span>
+        {{ item.subtime|timeuntil }}
+      </span>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 {% endblock %}
 {% block leftcontentscript %}
 {% endblock %}
