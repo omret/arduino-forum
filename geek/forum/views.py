@@ -7,6 +7,7 @@ from .models import Topic
 from qiniu import Auth, put_file
 import qiniu.config
 from geek import settings
+import json
 
 ACCESS_KEY = settings.ACCESS_KEY
 SECRET_KEY = settings.SECRET_KEY
@@ -15,12 +16,15 @@ BUKET_NAME = settings.BUKET_NAME
 # Create your views here.
 def forum(request):
     user = __getUserFromSession(request)
+    # topic_list = Topic.objects.all()
+    # print("--------------------------")
+    # print(topic_list)
     return render(request,'forum/forum.html',{"user":user})
 
 def forum_new(request):
     user = __getUserFromSession(request)
     if user == None:
-        return HttpResponseRedirect('/forum/')
+        return HttpResponseRedirect('/')
     topicform = NewTopicForm()
     if request.method == "POST":
         topicformPost = NewTopicForm(request.POST)
@@ -30,8 +34,8 @@ def forum_new(request):
             newtopic = Topic()
             __setNewTopic(newtopic,title,content,user)
             try:
-                newsarti.save()
-                return HttpResponseRedirect('/forum/')
+                newtopic.save()
+                return HttpResponseRedirect('/')
             except Exception as e:
                 print(e)
     response = render(request,'forum/forumnew.html',{"user":user,"topicform":topicform})

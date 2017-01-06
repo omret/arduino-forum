@@ -1,0 +1,42 @@
+.content-container {
+    width: 960px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.user-card {
+    width: auto;
+    text-align: center;
+}
+
+.user-card-button {
+    width: 36px;
+    margin-top: 82px;
+}
+
+#signin-button {
+    margin-right: 12px;
+}
+
+#signup-button {
+    margin-left: 12px;
+}
+
+.content-card {
+    width: auto;
+    height: 500px;
+}
+
+.user-card-button-container {
+    display: none;
+}
+
+#user-id {
+    display: none;
+}
+
+#topic-button {}
+
+.user-card-profile {
+    text-align: center;
+}
