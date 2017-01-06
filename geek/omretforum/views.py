@@ -2,12 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from omretuser.models import User
 from .forms import NewTopicForm
-from .models import Topic
 
 from qiniu import Auth, put_file
 import qiniu.config
 from geek import settings
 import json
+from .models import Topic,Comment
 
 ACCESS_KEY = settings.ACCESS_KEY
 SECRET_KEY = settings.SECRET_KEY
@@ -16,10 +16,23 @@ BUKET_NAME = settings.BUKET_NAME
 # Create your views here.
 def forum(request):
     user = __getUserFromSession(request)
-    # topic_list = Topic.objects.all()
-    # print("--------------------------")
-    # print(topic_list)
-    return render(request,'forum/forum.html',{"user":user})
+    topic_list = Topic.objects.all()
+    print(topic_list)
+    return render(request,'omretforum/forum.html',{"user":user,"topic_list":topic_list})
+
+def topic_index(request,index):
+    user = __getUserFromSession(request)
+    try:
+        topic = Topic.objects.get(id=index)
+    except Exception as e:
+        return HttpResponseRedirect('/')
+        print(e)
+    try:
+        topic_comment = Comment.objects.get(topic=topic)
+    except Exception as e:
+        topic_commnet = None
+
+    return render(request,'omretforum/topic_index.html',{})
 
 def forum_new(request):
     user = __getUserFromSession(request)
@@ -38,7 +51,7 @@ def forum_new(request):
                 return HttpResponseRedirect('/')
             except Exception as e:
                 print(e)
-    response = render(request,'forum/forumnew.html',{"user":user,"topicform":topicform})
+    response = render(request,'omretforum/forumnew.html',{"user":user,"topicform":topicform})
     return response
 
 def __getUserFromSession(request):

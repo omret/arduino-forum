@@ -6,6 +6,7 @@ class NewTopicForm(forms.Form):
                             widget=forms.TextInput(
                                 attrs={"id": "title",
                                 "class":"mdl-textfield__input",
+                                "maxlength":"80",
                                 "name":"title"}
                             ))
 

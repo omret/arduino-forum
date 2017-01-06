@@ -21,7 +21,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^',include('arduino.urls')),
-    url(r'^',include('forum.urls')),
+    url(r'^',include('omretforum.urls')),
     url(r'^',include('omretuser.urls')),
 #    url(r'^forum/', include(board.urls)),
 ]

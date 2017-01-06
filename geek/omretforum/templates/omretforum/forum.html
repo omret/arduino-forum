@@ -1,0 +1,41 @@
+{% extends "omretforum/forum_base.html" %}
+{% load static %}
+{% block leftcontentstyle %}
+<link rel="stylesheet" href="{% static 'omretforum/css/forum.css' %}">
+{% endblock %}
+{% block leftcontent %}
+<div class="left-card mdl-card mdl-shadow--2dp">
+  <div class="topic-list-container">
+    {% for item in topic_list %}
+    <div class="topic-item-container">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--11-col">
+          <div class="topic-item-title">
+            <a href="/topic{{ item.id }}">{{ item.title }}</a>
+          </div>
+          <div class="topic-item-misc">
+            <small>
+              <span>
+                {{ item.user }}
+              </span>
+              <span>
+                {{ item.subtime|timeuntil }} ago
+              </span>
+            </small>
+          </div>
+        </div>
+
+        <div class="mdl-cell mdl-cell--1-col">
+          <span class="mdl-badge" data-badge="4"></span>
+        </div>
+      </div>
+    </div>
+      {% if not forloop.last %}
+      <hr class="topic-item-line">
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+{% block leftcontentscript %}
+{% endblock %}

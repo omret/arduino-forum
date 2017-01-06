@@ -1,12 +1,12 @@
-{% extends "forum/forum_base.html" %}
+{% extends "omretforum/forum_base.html" %}
 {% load static %}
 {% block leftcontentstyle %}
-<link rel="stylesheet" href="{% static 'forum/css/forumnew.css' %}">
+<link rel="stylesheet" href="{% static 'omretforum/css/forumnew.css' %}">
 <script type="text/javascript" src="{% static 'tinymce/js/tinymce/tinymce.min.js' %}"></script>
 <script src="{% static 'qiniu/plupload/moxie.min.js' %}"></script>
 <script src="{% static 'qiniu/plupload/plupload.min.js' %}"></script>
 <script src="{% static 'qiniu/dist/qiniu.min.js' %}"></script>
-<script src="{% static 'forum/js/postarti.js' %}"></script>
+<script src="{% static 'omretforum/js/postarti.js' %}"></script>
 <script>
      tinymce.init({
          selector: '#omrettinymce',

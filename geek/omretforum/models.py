@@ -5,7 +5,7 @@ import omretuser.models as omretuser_models
 class Topic(models.Model):
     author = models.ForeignKey(omretuser_models.User)
     subtime = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=80,null=False)
+    title = models.CharField(max_length=30,null=False)
     content = models.CharField(max_length=5000,null=False)
 
     def __str__(self):

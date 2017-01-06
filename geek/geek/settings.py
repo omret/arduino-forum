@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'arduino.apps.ArduinoConfig',
-    'forum.apps.ForumConfig',
+    'omretforum.apps.OmretforumConfig',
     'omretuser.apps.OmretuserConfig',
     # Machina related apps:
     #'mptt',
