@@ -5,38 +5,58 @@
 {% endblock %}
 {% block leftcontent %}
 <div class="left-card mdl-card mdl-shadow--2dp">
-  {% for item in topic_list %}
-  <div class="topic-item-container">
-    <div class="topic-item-title">
-      <strong>{{ item.title }}</strong>
+  <div class="topic-list-container">
+    {% for item in topic_list %}
+    <div class="topic-item-container">
+      <div class="topic-item-title">
+        <strong><a href="/topic{{ item.id }}">{{ item.title }}</a></strong>
+      </div>
+      <div class="topic-item-misc">
+        <small>
+          <span>
+            {{ item.user }}
+          </span>
+          <span>
+            {{ item.subtime|timeuntil }}
+          </span>
+        </small>
+      </div>
     </div>
-    <div class="topic-item-misc">
-      <small>
-        <span>
-          {{ item.user }}
-        </span>
-        <span>
-          {{ item.subtime|timeuntil }}
-        </span>
-      </small>
+      {% if not forloop.last %}
+      <hr class="topic-item-line">
+      {% endif %}
+    {% endfor %}
+  </div>
+  <!-- ########################################################## -->
+  {% for i in "x"|rjust:"10"%}
+  <div class="topic-item-container">
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--11-col">
+        <div class="topic-item-title">
+          <strong>测试testtesttest测试测试测试testtesttest测试测试测试testtesttest测试测试测试testtesttest测试测试测试testtesttest</strong>
+        </div>
+        <div class="topic-item-misc">
+          <small>
+            <span>
+              omret
+            </span>
+            <span>
+              2 week
+            </span>
+          </small>
+        </div>
+      </div>
+      <div class="mdl-cell mdl-cell--1-col">
+        <span class="mdl-badge" data-badge="4"></span>
+      </div>
     </div>
   </div>
+  {% if not forloop.last %}
+  <hr class="topic-item-line">
+  {% endif %}
   {% endfor %}
-  <div class="topic-item-container">
-    <div class="topic-item-title">
-      <strong>测试测试测试testtesttest</strong>
-    </div>
-    <div class="topic-item-misc">
-      <small>
-        <span>
-          omret
-        </span>
-        <span>
-          2 week
-        </span>
-      </small>
-    </div>
-  </div>
+  <!-- ########################################################## -->
+
 </div>
 {% endblock %}
 {% block leftcontentscript %}

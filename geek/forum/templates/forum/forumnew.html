@@ -94,7 +94,7 @@
 
 <div class="left-card mdl-card mdl-shadow--2dp">
   <h4>发布新文章</h4>
-  <form id="new-form" method="post">
+  <form id="new-form" method="post" novalidate>
     {% csrf_token %}
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
       <input class="mdl-textfield__input" type="text" id="title" name="title" >

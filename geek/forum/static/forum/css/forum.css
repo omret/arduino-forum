@@ -12,3 +12,9 @@
 .topic-item-misc {
     color: #999;
 }
+
+.topic-item-line {
+    height: 1px;
+    color: #999;
+    margin: 0;
+}
