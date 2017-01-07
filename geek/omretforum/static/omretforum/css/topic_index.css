@@ -1,5 +1,42 @@
 .left-card {
     width: auto;
-    padding-left: 30px;
-    padding-right: 30px;
+    height: auto;
+    min-height: 0;
+}
+
+.topic-content-container {
+    text-align: initial;
+    padding: 30px 40px;
+}
+
+.topic-title-container {
+    text-align: left;
+    padding: 30px 50px;
+    background-color: #f6f6f6;
+}
+
+.topic-title {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.topic-misc {
+    padding-top: 10px;
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+.topic-misc i {
+    position: absolute;
+    font-size: 18px;
+}
+
+.topic-misc-text {
+    padding-left: 20px;
+}
+
+hr {
+    height: 1px;
+    color: #999;
+    margin: 0;
 }

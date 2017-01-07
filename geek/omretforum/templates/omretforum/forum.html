@@ -6,27 +6,27 @@
 {% block leftcontent %}
 <div class="left-card mdl-card mdl-shadow--2dp">
   <div class="topic-list-container">
-    {% for item in topic_list %}
+    {% for item,com_num in topic_dict.items %}
     <div class="topic-item-container">
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--11-col">
           <div class="topic-item-title">
-            <a href="/topic{{ item.id }}">{{ item.title }}</a>
+            <a href="/forum/topic{{ item.id }}">{{ item.title }}</a>
           </div>
           <div class="topic-item-misc">
             <small>
               <span>
-                {{ item.user }}
+                {{ item.author }}
               </span>
               <span>
-                {{ item.subtime|timeuntil }} ago
+                {{ item.subtime | timesince }} ago
               </span>
             </small>
           </div>
         </div>
 
         <div class="mdl-cell mdl-cell--1-col">
-          <span class="mdl-badge" data-badge="4"></span>
+          <span class="mdl-badge" data-badge="{{ com_num }}"></span>
         </div>
       </div>
     </div>

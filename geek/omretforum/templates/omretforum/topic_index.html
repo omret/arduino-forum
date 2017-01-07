@@ -1,13 +1,24 @@
 {% extends "omretforum/forum_base.html" %}
-<link rel="stylesheet" href="{% static 'omretforum/css/topic_index.css' %}">
 {% load static %}
 {% block leftcontentstyle %}
-<div class="left-card mdl-card mdl-shadow--2dp">
-  <div class="topic-index-container">
-  </div>
-</div>
+<link rel="stylesheet" href="{% static 'omretforum/css/topic_index.css' %}">
 {% endblock %}
 {% block leftcontent %}
+<div class="left-card mdl-card mdl-shadow--2dp">
+  <div class="topic-title-container">
+    <div class="topic-title">
+      {{ topic.title }}
+    </div>
+    <div class="topic-misc">
+      <i class="material-icons">account_box</i><span class=topic-misc-text>{{ topic.author }}</span>
+      <i class="material-icons">schedule</i><span class=topic-misc-text>{{ topic.subtime }}</span>
+    </div>
+  </div>
+  <hr>
+  <div class="topic-content-container">
+    {{ topic.content | safe }}
+  </div>
+</div>
 {% endblock %}
 {% block script %}
 {% endblock　%}
