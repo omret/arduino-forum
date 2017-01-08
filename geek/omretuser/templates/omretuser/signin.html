@@ -7,7 +7,7 @@
 <div class="content-container">
   <h5>SIGN IN 登录</h5>
 
-  <form id="signin-form" action="/signinsubmit/" method="post">
+  <form id="signin-form" action="/signinsubmit/?next={{nextpath}}" method="post">
     {% csrf_token %}
     <div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

@@ -10,10 +10,12 @@ from .models import User
 
 # Create your views here.
 def signup(request):
-    return render(request,'omretuser/signup.html',{})
+    nextpath = request.GET.get('next')
+    return render(request,'omretuser/signup.html',{'nextpath':nextpath})
 
 @csrf_protect
 def signup_submit(request):
+    nextpath = request.GET.get('next')
     if request.method == 'POST':
         username = request.POST.get("username","")
         email = request.POST.get("email","")
@@ -28,12 +30,12 @@ def signup_submit(request):
             try:
                 user.save()
                 request.session['uid'] = user.id
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect(nextpath)
             except Exception as e:
                 print(e)
-                return HttpResponseRedirect('/signup/')
+                return HttpResponseRedirect('/signup/',kargs={'nextpath':nextpath})
 
-    return HttpResponseRedirect('/signup/')
+    return HttpResponseRedirect('/signup/',kargs={'nextpath':nextpath})
 
 @csrf_exempt
 def signup_comfirm(request):
@@ -62,10 +64,12 @@ def signup_comfirm(request):
     return HttpResponse("");
 
 def signin(request):
-    return render(request,'omretuser/signin.html',{})
+    nextpath = request.GET.get('next')
+    return render(request,'omretuser/signin.html',{'nextpath':nextpath})
 
 @csrf_protect
 def signin_submit(request):
+    nextpath = request.GET.get('next')
     if request.method == 'POST':
         username = request.POST.get("username","")
         password = request.POST.get("password","")
@@ -74,9 +78,9 @@ def signin_submit(request):
                 user = User.objects.get(name=username)
                 if user.password == hashlib.sha1(password.encode(encoding='utf-8')).hexdigest():
                     request.session['uid'] = user.id
-                    return HttpResponseRedirect('/')
+                    return HttpResponseRedirect(nextpath)
                 else:
-                    return render(request,'omretuser/signin.html',{'msg':'用户名或密码错误'})
+                    return render(request,'omretuser/signin.html',{'msg':'用户名或密码错误','nextpath':nextpath})
             except Exception as e:
-                return render(request,'omretuser/signin.html',{'msg':'用户名或密码错误'})
-    return HttpResponseRedirect('/signin/')
+                return render(request,'omretuser/signin.html',{'msg':'用户名或密码错误','nextpath':nextpath})
+    return HttpResponseRedirect('/signin/',kargs={'nextpath':nextpath})

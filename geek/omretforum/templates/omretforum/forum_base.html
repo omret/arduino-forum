@@ -23,10 +23,10 @@
         </div>
         <!-- have not signin -->
         <div class="user-card-button-container">
-          <button class="user-card-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="signin-button" onclick="location='/signin'">
+          <button class="user-card-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="signin-button" onclick="location='/signin?next={{nextpath}}'">
           登录
           </button>
-          <button class="user-card-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect " id="signup-button" onclick="location='/signup'" >
+          <button class="user-card-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect " id="signup-button" onclick="location='/signup?next={{nextpath}}'" >
           注册
           </button>
         </div>

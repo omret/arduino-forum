@@ -36,6 +36,22 @@
     {% endfor %}
   </div>
 </div>
+<div class="pagination">
+      <a href="?page=1"><span class="pagination-item">&lt;&lt;</span></a>
+      {% if topices.has_previous %}
+          <a href="?page={{ topices.previous_page_number }}"><span class="pagination-item">&lt;</span></a>
+      {% endif %}
+
+      <span class="current pagination-item">
+        {{ topices.number }}/{{ topices.paginator.num_pages }}
+      </span>
+
+      {% if topices.has_next %}
+          <a href="?page={{ topices.next_page_number }}"><span class="pagination-item">&gt;</span></a>
+      {% endif %}
+      <a href="?page={{ topices.paginator.num_pages }}"><span class="pagination-item">&gt;&gt;</span></a>
+
+</div>
 {% endblock %}
 {% block leftcontentscript %}
 {% endblock %}

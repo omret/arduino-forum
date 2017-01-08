@@ -3,7 +3,7 @@
 <div class="content-container">
   <h5>SIGN UP 注册</h5>
 
-  <form id="signup-form" action="/signupsubmit/" method="post">
+  <form id="signup-form" action="/signupsubmit/?next={{nextpath}}" method="post">
     {% csrf_token %}
     <div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

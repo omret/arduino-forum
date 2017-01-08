@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 from omretuser.models import User
 from .forms import NewTopicForm
-
 from qiniu import Auth, put_file
 import qiniu.config
 from geek import settings
@@ -17,13 +18,24 @@ BUKET_NAME = settings.BUKET_NAME
 def forum(request):
     user = __getUserFromSession(request)
     topic_list = Topic.objects.all()
+    paginator = Paginator(topic_list, 10)
+    page = request.GET.get('page')
+
+    try:
+        topices = paginator.page(page)
+    except PageNotAnInteger:
+        topices = paginator.page(1)
+    except EmptyPage:
+        topices = paginator.page(paginator.num_pages)
+
     topic_dict = {}
-    for topic in topic_list:
+    for topic in topices:
         comment_num = Comment.objects.filter(topic=topic).count()
         topic_dict[topic]=comment_num
-    return render(request,'omretforum/forum.html',{"user":user,"topic_dict":topic_dict})
+    return render(request,'omretforum/forum.html',{"user":user,"topic_dict":topic_dict,"topices":topices})
 
 def topic_index(request,index):
+    print(request.path)
     user = __getUserFromSession(request)
     try:
         topic = Topic.objects.get(id=index)
@@ -35,7 +47,7 @@ def topic_index(request,index):
     except Exception as e:
         topic_commnet = None
 
-    return render(request,'omretforum/topic_index.html',{"user":user,"topic":topic})
+    return render(request,'omretforum/topic_index.html',{"user":user,"topic":topic,"nextpath":request.path})
 
 def forum_new(request):
     user = __getUserFromSession(request)
