@@ -17,7 +17,8 @@ BUKET_NAME = settings.BUKET_NAME
 # Create your views here.
 def forum(request):
     user = __getUserFromSession(request)
-    topic_list = Topic.objects.all()
+    topic_list = Topic.objects.all().order_by('-subtime')
+    print(topic_list)
     paginator = Paginator(topic_list, 10)
     page = request.GET.get('page')
 
@@ -30,9 +31,8 @@ def forum(request):
 
     topic_dict = {}
     for topic in topices:
-        comment_num = Comment.objects.filter(topic=topic).count()
-        topic_dict[topic]=comment_num
-    return render(request,'omretforum/forum.html',{"user":user,"topic_dict":topic_dict,"topices":topices})
+        topic.comment_num = Comment.objects.filter(topic=topic).count()
+    return render(request,'omretforum/forum.html',{"user":user,"topices":topices})
 
 def topic_index(request,index):
     print(request.path)
