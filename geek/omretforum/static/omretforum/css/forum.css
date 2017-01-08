@@ -6,11 +6,25 @@
 
 .topic-item-container {
     text-align: left;
-    padding: 12px 24px;
+    padding: 0 24px;
 }
 
 .topic-item-misc {
     color: #999;
+    padding-top: 8px;
+}
+
+.topic-item-subtime {
+    padding-left: 20px;
+}
+
+.topic-item-misc i {
+    font-size: 18px;
+    position: absolute;
+}
+
+.topic-misc-text {
+    padding-left: 20px;
 }
 
 .topic-item-line {

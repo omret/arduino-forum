@@ -5,13 +5,14 @@ from django.views.decorators.csrf import csrf_protect,csrf_exempt
 import json
 import hashlib
 import uuid
+import urllib.parse
 
 from .models import User
 
 # Create your views here.
 def signup(request):
     nextpath = request.GET.get('next')
-    return render(request,'omretuser/signup.html',{'nextpath':nextpath})
+    return render(request,'omretuser/signup.html',{'nextpath':urllib.parse.quote(nextpath, safe='')})
 
 @csrf_protect
 def signup_submit(request):
@@ -33,9 +34,9 @@ def signup_submit(request):
                 return HttpResponseRedirect(nextpath)
             except Exception as e:
                 print(e)
-                return HttpResponseRedirect('/signup/',kargs={'nextpath':nextpath})
+                return HttpResponseRedirect('/signup/',kargs={'nextpath':urllib.parse.quote(nextpath, safe='')})
 
-    return HttpResponseRedirect('/signup/',kargs={'nextpath':nextpath})
+    return HttpResponseRedirect('/signup/',kargs={'nextpath':urllib.parse.quote(nextpath, safe='')})
 
 @csrf_exempt
 def signup_comfirm(request):
@@ -65,7 +66,7 @@ def signup_comfirm(request):
 
 def signin(request):
     nextpath = request.GET.get('next')
-    return render(request,'omretuser/signin.html',{'nextpath':nextpath})
+    return render(request,'omretuser/signin.html',{'nextpath':urllib.parse.quote(nextpath, safe='')})
 
 @csrf_protect
 def signin_submit(request):
@@ -80,7 +81,7 @@ def signin_submit(request):
                     request.session['uid'] = user.id
                     return HttpResponseRedirect(nextpath)
                 else:
-                    return render(request,'omretuser/signin.html',{'msg':'用户名或密码错误','nextpath':nextpath})
+                    return render(request,'omretuser/signin.html',{'msg':'用户名或密码错误','nextpath':urllib.parse.quote(nextpath, safe='')})
             except Exception as e:
-                return render(request,'omretuser/signin.html',{'msg':'用户名或密码错误','nextpath':nextpath})
-    return HttpResponseRedirect('/signin/',kargs={'nextpath':nextpath})
+                return render(request,'omretuser/signin.html',{'msg':'用户名或密码错误','nextpath':urllib.parse.quote(nextpath, safe='')})
+    return HttpResponseRedirect('/signin/',kargs={'nextpath':urllib.parse.quote(nextpath, safe='')})

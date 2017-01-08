@@ -15,12 +15,10 @@
           </div>
           <div class="topic-item-misc">
             <small>
-              <span>
-                {{ item.author }}
-              </span>
-              <span>
-                {{ item.subtime | timesince }} ago
-              </span>
+              <i class="material-icons">account_box</i><span class="topic-misc-text">{{ item.author }}</span>
+            </small>
+            <small class="topic-item-subtime">
+              <i class="material-icons">schedule</i><span class="topic-misc-text">{{ item.subtime | timesince }} ago</span>
             </small>
           </div>
         </div>
