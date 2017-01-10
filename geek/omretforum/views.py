@@ -43,11 +43,11 @@ def topic_index(request,index):
         return HttpResponseRedirect('/')
         print(e)
     try:
-        topic_comment = Comment.objects.get(topic=topic)
+        comment_list = Comment.objects.get(topic=topic)
     except Exception as e:
-        topic_commnet = None
+        comment_list = []
 
-    return render(request,'omretforum/topic_index.html',{"user":user,"topic":topic,"nextpath":urllib.parse.quote(request.path, safe='')})
+    return render(request,'omretforum/topic_index.html',{"user":user,"topic":topic,"nextpath":urllib.parse.quote(request.path, safe=''),"comment_list":comment_list})
 
 def forum_new(request):
     user = __getUserFromSession(request)

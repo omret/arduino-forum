@@ -19,6 +19,20 @@
     {{ topic.content | safe }}
   </div>
 </div>
+<div class="left-card mdl-card mdl-shadow--2dp">
+  <div class="topic-comment-container">
+    {% for comment in comment_list %}
+      <div class="comment-item-container">
+        {{ comment.commnent_content }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="left-card mdl-card mdl-shadow--2dp">
+  <div class="topic-comment-container">
+
+  </div>
+</div>
 {% endblock %}
 {% block leftcontentscript %}
 {% endblock %}
